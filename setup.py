@@ -5,21 +5,21 @@ with open(os.path.join(os.path.dirname(__file__), "README.md"), encoding="utf-8"
     readme = f.read()
 
 if os.path.exists("/bin/bash"):
-    scripts = ["bash/pipenv-shebang"]
+    scripts = ["bash/poetry-shebang"]
 else:
-    scripts = ["py/pipenv-shebang"]
+    scripts = ["py/poetry-shebang"]
 
 setup(
-    name="pipenv-shebang",
+    name="poetry-shebang",
     version="0.0.4",
-    url="https://github.com/laktak/pipenv-shebang",
-    author="Christian Zangl",
-    author_email="laktak@cdak.net",
-    description="pipenv-shebang allows you to put scripts in your path that run in a pipenv environment.",
+    url="https://github.com/ericriff/poetry-shebang",
+    author="Eric Riff",
+    author_email="ericriff@gmail.com",
+    description="poetry-shebang allows you to put scripts in your path that run in a poetry environment.",
     long_description=readme,
     long_description_content_type="text/markdown",
     packages=[],
     install_requires=[],
     scripts=scripts,
-    data_files=[("py", ["py/pipenv-shebang"]), ("bash", ["bash/pipenv-shebang"])],
+    data_files=[("py", ["py/poetry-shebang"]), ("bash", ["bash/poetry-shebang"])],
 )

@@ -1,28 +1,33 @@
-# pipenv-shebang
+# poetry-shebang
 
-*pipenv-shebang* allows you to put scripts in your path that run in a pipenv environment.
+*poetry-shebang* allows you to put scripts in your path that run in a poetry environment.
 
-This solves the problem of launching `pipenv run script.py` from outside the script directory.
+This solves the problem of launching `poetry run script.py` from outside the script directory.
+
+
+## Credits
+
+This project is based on *pipenv-shebang*. Take a look at this project [here](https://github.com/laktak/pipenv-shebang).
 
 ## Usage
 
 Put this shebang at the top of your script:
 
 ```
-#!/usr/bin/env pipenv-shebang
+#!/usr/bin/env poetry-shebang
 ```
 
 You can also run your script with
 
 ```
-pipenv-shebang /path/to/script
+poetry-shebang /path/to/script
 ```
 
 ## Installation
 
 ```
-sudo pip install pipenv-shebang
+sudo pip install poetry-shebang
 
 # or
-pip install --user pipenv-shebang
+pip install --user poetry-shebang
 ```

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function getPyproject() {
+  DIR="$(dirname "$1")"
+  if [[ $DIR == "/" ]]; then exit; fi
+  PYPROJECT="$DIR/pyproject.toml"
+  if [[ -e "$PYPROJECT" ]]; then
+    echo "$PYPROJECT"
+  else
+    getPyproject "$DIR"
+  fi
+}
+
+SCRIPT="$(realpath "$1")"
+shift
+PYPROJECT=$(getPyproject "$SCRIPT")
+
+if [[ -n "$PYPROJECT" ]]; then
+  POETRY_PYPROJECT="$PYPROJECT" exec poetry run python "$SCRIPT" "$@"
+else
+  echo "Could not locate the pyproject for $SCRIPT."
+  exit 1
+fi

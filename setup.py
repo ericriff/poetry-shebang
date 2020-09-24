@@ -11,7 +11,7 @@ else:
 
 setup(
     name="poetry-shebang",
-    version="0.0.4",
+    version="0.0.1",
     url="https://github.com/ericriff/poetry-shebang",
     author="Eric Riff",
     author_email="ericriff@gmail.com",

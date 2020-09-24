@@ -4,26 +4,10 @@ import os
 import subprocess
 import sys
 
-
-def get_pyproject(dir):
-    dir = os.path.dirname(dir)
-    if dir == "/":
-        return ""
-    pyproject = dir + "/pyproject.toml"
-    if os.path.exists(pyproject):
-        return pyproject
-    else:
-        return get_pyproject(dir)
-
-
 script = sys.argv[1]
-pyproject = get_pyproject(os.path.realpath(script))
+script_folder = os.path.dirname(script)
+script_name = os.path.basename(script)
 
-if pyproject:
-    env = os.environ.copy()
-    env["POETRY_PYPROJECT"] = pyproject
-    proc = subprocess.Popen(["poetry", "run", "python", script] + sys.argv[2:], env=env)
-    sys.exit(proc.wait())
-else:
-    print("Could not locate the pyproject file for $SCRIPT.")
-    sys.exit(1)
+# Move cwd to the script location, poetry will look in the same folder and its parents for the pyproject.toml file
+proc = subprocess.Popen(["poetry", "run", "python", script_name] + sys.argv[2:], cwd=script_folder)
+sys.exit(proc.wait())
